@@ -37,15 +37,40 @@ union					u_arg
 	unsigned int		uli;
 };
 
-int	ft_printf(const char *format, ...);
+/*----------------------ft_printf.c-----------------------------------------*/
+int						ft_printf(const char *fmt, ...);
 
+/*----------------------uitoa_base_X.c--------------------------------------*/
 char					*uitoa_base_1(unsigned char n, int base);
 char					*uitoa_base_2(unsigned short int n, int base);
 char					*uitoa_base_4(unsigned int n, int base);
 char					*uitoa_base_8(unsigned long int n, int base);
+
+/*----------------------itoa_X.c--------------------------------------------*/
 char					*itoa_1(char n);
 char					*itoa_2(short int n);
 char					*itoa_4(int n);
 char					*itoa_8(long int n);
-char					*strcon(char *s1, char *s2);
+
+/*----------------------insert_flag.c---------------------------------------*/
+void					insert_flag(char **str, t_form* form);
+/*static char			*make_precision(char **str, t_form *form);			*/
+/*static void			make_devant(t_form *form);							*/
+/*static void			retirer_signe(char **str, t_form *form);			*/
+
+/*----------------------argtoa.c--------------------------------------------*/
+char					*argtoa(t_form* form, va_list *list);
+/*static char 			*uinttoa_base(t_form *form, va_list *list);			*/
+/*static char 			*inttoa(t_form *form, va_list *list);				*/
+
+/*----------------------read_flag.c-----------------------------------------*/
+void					read_flag(const char **fmt, t_form *form);
+/*static void			set_size(const char **fmt, t_form *form);			*/
+/*static void			read_precision(const char **fmt, t_form *form);		*/
+/*static char			is_flag(char c);									*/
+/*static void			normalize_flag(const char **fmt, t_form *form);		*/
+
+/*----------------------print_arg.c-----------------------------------------*/
+int						print_arg(const char **fmt, va_list *list);
+/*static void			read_base(const char **fmt, t_form *form);			*/
 #endif

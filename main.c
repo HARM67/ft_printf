@@ -3,10 +3,15 @@
 
 void	test(char *str, long int i)
 {
-	printf(str, i);
-	printf("@\n");
-	ft_printf(str, i);
-	printf("@\n\n");
+	int rt;
+	int rt2;
+
+	printf("   printf(\"%s\") : '", str);
+	rt = printf(str, i);
+	printf("' = %d\n", rt);
+	ft_printf("ft_printf(\"%s\") : '", str);
+	rt2 = ft_printf(str, i);
+	ft_printf("' = %d\n\n", rt2);
 }
 
 int main()
@@ -161,5 +166,8 @@ int main()
 	test("%lh-+i# 9hhh  x", (long int)7850);
 	test("%h4h0hh9lx", (long int)7850);
 	test("%lh- 9hhhx", (long int)7850);
+
+	test("%% %d", (long int)7850);
+	test("%d %%", (long int)7850);
 	return (0);
 }
