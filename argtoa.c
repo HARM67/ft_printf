@@ -4,7 +4,7 @@ static char *uinttoa_base(t_form *form, va_list *list)
 {
 	unsigned long int tmp;
 
-	tmp = va_arg(*list, unsigned long int);
+	tmp = (unsigned long int)va_arg(*list, unsigned long int);
 	if (form->size == 1)
 		return (uitoa_base_1((unsigned char)tmp, form->base));
 	else if (form->size == 2)
@@ -20,7 +20,7 @@ static char *inttoa(t_form *form, va_list *list)
 {
 	long int tmp;
 
-	tmp = va_arg(*list, long int);
+	tmp = (long int)va_arg(*list, long int);
 	if (form->size == 1)
 		return (itoa_1((char)tmp));
 	else if (form->size == 2)

@@ -13,6 +13,18 @@ void	test(char *str, long int i)
 	rt2 = ft_printf(str, i);
 	ft_printf("' = %d\n\n", rt2);
 }
+void	test2(char *str, long int i, long int j)
+{
+	int rt;
+	int rt2;
+
+	printf("   printf(\"%s\") : '", str);
+	rt = printf(str, i, j);
+	printf("' = %d\n", rt);
+	ft_printf("ft_printf(\"%s\") : '", str);
+	rt2 = ft_printf(str, i, j);
+	ft_printf("' = %d\n\n", rt2);
+}
 
 int main()
 {
@@ -151,7 +163,7 @@ int main()
 
 	test("%d", (long int)7850);
 	test("%h9d", (long int)7850);
-	test("%hhd", (long int)7850);
+	test("%hd", (long int)7850);
 	test("%h-+ hhd", (long int)7850);
 	test("%hhhhd", (long int)7850);
 	test("%lh-+ 9hhhd", (long int)7850);
@@ -171,5 +183,42 @@ int main()
 	test("%d %%", (long int)7850);
 
 	test("  %s  ", 0);
+
+	test("%d", (long int)7850);
+	test("%hd", (long int)7850);
+	test("%hhd", (long int)7850);
+	test("%hhhd", (long int)7850);
+	test("%hhhhd", (long int)7850);
+	test("%o", (long int)7850);
+	test("%ho", (long int)7850);
+	test("%hho", (long int)7850);
+	test("%hhho", (long int)7850);
+	test("%hhhho", (long int)7850);
+	test("%u", (long int)7850);
+	test("%hu", (long int)7850);
+	test("%hhu", (long int)7850);
+	test("%hhhu", (long int)7850);
+	test("%hhhhu", (long int)7850);
+	test("%x", (long int)7850);
+	test("%hx", (long int)7850);
+	test("%hhx", (long int)7850);
+	test("%hhhx", (long int)7850);
+	test("%hhhhx", (long int)7850);
+
+	test("%c", 1);
+	test("%c df", '\0');
+	test("%s", "sdf\0sdf");
+
+	test2("%c %c", '\0', '#');
+	test2("%c %c", '#', '\0');
+	test2("%s %0-8d", "Salut mec", 42);
+	test2("%s %0+8d", "Salut mec", 42);
+	test2("%s %0+-d", "Salut mec", 42);
+	test2("%s %0+-o", "Salut mec", 42);
+	test2("%s %0+-x", "Salut mec", 42);
+	test2("%s %0+--#xo", "Salut mec", 42);
+	test2(" %0+--#xo   - + --# %s", 42, "test");
+	test2(" %0+--#cxo   - + --# %s", '\0', "test");
+	test2(" %0+--#cxo   - + --# %s", 1, "test");
 	return (0);
 }

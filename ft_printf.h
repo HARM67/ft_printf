@@ -71,6 +71,6 @@ void					read_flag(const char **fmt, t_form *form);
 /*static void			normalize_flag(const char **fmt, t_form *form);		*/
 
 /*----------------------print_arg.c-----------------------------------------*/
-int						print_arg(const char **fmt, va_list *list);
+void					print_arg(const char **fmt, va_list *list, int *l);
 /*static void			read_base(const char **fmt, t_form *form);			*/
 #endif

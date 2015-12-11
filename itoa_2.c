@@ -30,7 +30,7 @@ char		*itoa_2(short int n)
 		return (ft_strdup("-32768"));
 	if (n == 0)
 		return (ft_strdup("0"));
-	ft_bzero(tmp, 12);
+	ft_bzero(tmp, 7);
 	r_itoa_2(n, tmp);
 	rt = ft_strdup(tmp);
 	return (rt);

@@ -29,7 +29,7 @@ static	void	read_base(const char **fmt, t_form *form)
 	(*fmt)++;
 }
 
-int	print_arg(const char **fmt, va_list *list)
+void	print_arg(const char **fmt, va_list *list, int *l)
 {
 	t_form	form;
 	char *str;
@@ -41,6 +41,9 @@ int	print_arg(const char **fmt, va_list *list)
 	str = argtoa(&form, list);
 	insert_flag(&str, &form);
 	ft_putstr(str);
-	return (ft_strlen(str));
+	if (form.letter != 'c')
+		*l += ft_strlen(str);
+	else
+		(*l)++;
 }
 

@@ -10,7 +10,7 @@ int	ft_printf(const char *fmt, ...)
 	while (*fmt != 0)
 	{
 		if (*fmt == '%' && *(fmt + 1) != '%')
-			l += print_arg(&fmt, &list);
+			print_arg(&fmt, &list, &l);
 		else if (*fmt == '%' && *(fmt + 1) == '%')
 		{
 			ft_putchar('%');
