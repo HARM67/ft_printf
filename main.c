@@ -169,5 +169,7 @@ int main()
 
 	test("%% %d", (long int)7850);
 	test("%d %%", (long int)7850);
+
+	test("  %s  ", 0);
 	return (0);
 }

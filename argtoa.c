@@ -35,6 +35,7 @@ static char *inttoa(t_form *form, va_list *list)
 char	*argtoa(t_form* form, va_list *list)
 {
 	char c[2];
+	char *p;
 
 	c[1] = 0;
 	if (form->signe == -1)
@@ -43,7 +44,13 @@ char	*argtoa(t_form* form, va_list *list)
 		return (ft_strdup(c));
 	}
 	else if (form->signe == -2)
-		return (ft_strdup(va_arg(*list, char *)));
+	{
+		p = va_arg(*list, char *);
+		if (p != 0)
+			return (ft_strdup(p));
+		else
+			return (ft_strdup("(null)"));
+	}
 	else if (form->signe == -3)
 	{
 		c[0] = form->letter;
