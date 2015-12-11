@@ -15,12 +15,18 @@ struct					s_form
 	char				space;
 	char				moin;
 	char				plus;
+	char				h_flag;
+	char				l_flag;
+	char				j_flag;
+	char				z_flag;
 	int					precision;
 	char				signe;
 	char				base;
-	char				size;
+	unsigned long		size;
 	char				maj;
 	char				letter;
+	char				positive;
+	char				*devant;
 };
 
 union					u_arg
@@ -33,8 +39,11 @@ union					u_arg
 
 int	ft_printf(const char *format, ...);
 
-char					*uitoa_base(unsigned int n, int base);
-char					*itoa_1(char *n);
+char					*uitoa_base_1(unsigned char n, int base);
+char					*uitoa_base_2(unsigned short int n, int base);
+char					*uitoa_base_4(unsigned int n, int base);
+char					*uitoa_base_8(unsigned long int n, int base);
+char					*itoa_1(char n);
 char					*itoa_2(short int n);
 char					*itoa_4(int n);
 char					*itoa_8(long int n);
