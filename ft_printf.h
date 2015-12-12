@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
+/*   Updated: 2015/12/12 08:40:04 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include "libft.h"
@@ -15,6 +27,7 @@ struct					s_form
 	char				space;
 	char				moin;
 	char				plus;
+	char				point;
 	char				h_flag;
 	char				l_flag;
 	char				j_flag;
@@ -27,6 +40,7 @@ struct					s_form
 	char				letter;
 	char				positive;
 	char				*devant;
+	unsigned long int	length;
 };
 
 union					u_arg
@@ -37,40 +51,27 @@ union					u_arg
 	unsigned int		uli;
 };
 
-/*----------------------ft_printf.c-----------------------------------------*/
 int						ft_printf(const char *fmt, ...);
 
-/*----------------------uitoa_base_X.c--------------------------------------*/
 char					*uitoa_base_1(unsigned char n, int base);
 char					*uitoa_base_2(unsigned short int n, int base);
 char					*uitoa_base_4(unsigned int n, int base);
 char					*uitoa_base_8(unsigned long int n, int base);
 
-/*----------------------itoa_X.c--------------------------------------------*/
 char					*itoa_1(char n);
 char					*itoa_2(short int n);
 char					*itoa_4(int n);
 char					*itoa_8(long int n);
 
-/*----------------------insert_flag.c---------------------------------------*/
-void					insert_flag(char **str, t_form* form);
-/*static char			*make_precision(char **str, t_form *form);			*/
-/*static void			make_devant(t_form *form);							*/
-/*static void			retirer_signe(char **str, t_form *form);			*/
+void					insert_flag(char **str, t_form *form);
 
-/*----------------------argtoa.c--------------------------------------------*/
-char					*argtoa(t_form* form, va_list *list);
-/*static char 			*uinttoa_base(t_form *form, va_list *list);			*/
-/*static char 			*inttoa(t_form *form, va_list *list);				*/
+char					*argtoa(t_form *form, va_list *list);
 
-/*----------------------read_flag.c-----------------------------------------*/
 void					read_flag(const char **fmt, t_form *form);
-/*static void			set_size(const char **fmt, t_form *form);			*/
-/*static void			read_precision(const char **fmt, t_form *form);		*/
-/*static char			is_flag(char c);									*/
-/*static void			normalize_flag(const char **fmt, t_form *form);		*/
+void					set_size(const char **fmt, t_form *form);
+void					normalize_flag(const char **fmt, t_form *form);
 
-/*----------------------print_arg.c-----------------------------------------*/
 void					print_arg(const char **fmt, va_list *list, int *l);
-/*static void			read_base(const char **fmt, t_form *form);			*/
+
+//void					putwchar(int c)
 #endif

@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
+#include <locale.h>
 
 void	test(char *str, long int i)
 {
@@ -28,7 +30,13 @@ void	test2(char *str, long int i, long int j)
 
 int main()
 {
-	test("%d", 50);
+	setlocale(LC_ALL, "");
+	int i;
+
+i = 0;
+/*
+	test("%p", &i);
+	test("%d", -42);
 	test("% d", 50);
 	test("%+d", 50);
 	test("% +d", 50);
@@ -220,5 +228,23 @@ int main()
 	test2(" %0+--#xo   - + --# %s", 42, "test");
 	test2(" %0+--#cxo   - + --# %s", '\0', "test");
 	test2(" %0+--#cxo   - + --# %s", 1, "test");
+	test("%-8c", '\0');
+	test("%h-h9d", 7850);
+
+	test("%+X", 30000000000);
+	test("%+x", 30000000000);
+
+	test("%zhu", 30000000000);
+	test("%jhu", 30000000000);
+	test("%hzu", 30000000000);
+	test("%hU", 30000000000);
+
+	ft_printf("%d", -42);*/
+	//test("%p", &i);
+	printf("%S", L"米\n");
+	test("%D", LLONG_MIN - 1);
+	test("%D", LLONG_MIN - 1);
+//	test("%04s", "42");
+
 	return (0);
 }

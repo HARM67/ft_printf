@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_arg.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/11 22:06:37 by mfroehly          #+#    #+#             */
+/*   Updated: 2015/12/12 08:43:01 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static	void	read_base(const char **fmt, t_form *form)
@@ -18,32 +30,45 @@ static	void	read_base(const char **fmt, t_form *form)
 		form->base = 8;
 	else if (**fmt == 'x' || **fmt == 'X' || **fmt == 'p')
 		form->base = 16;
-	else if (**fmt == 'c' || **fmt == 'C')
+	else if (**fmt == 'c')
 		form->signe = -1;
+	else if (**fmt == 'C')
+		form->signe = -4;
 	else if (**fmt == 's' || **fmt == 'S')
 		form->signe = -2;
 	else
 		form->signe = -3;
-	if (**fmt == 'D' || **fmt == 'U' || **fmt == 'O' || **fmt == 'X')
-		form->maj = 1;
 	(*fmt)++;
 }
 
-void	print_arg(const char **fmt, va_list *list, int *l)
+void			make_X(char *str)
+{
+	while (*str != '\0')
+	{
+		if (ft_islower(*str))
+			*str -= 32;
+		str++;
+	}
+}
+
+void			print_arg(const char **fmt, va_list *list, int *l)
 {
 	t_form	form;
-	char *str;
+	char	*str;
 
 	(*fmt)++;
+	if ((**fmt) == '\0' )
+		return ;
 	ft_bzero(&form, sizeof(t_form));
 	read_flag(fmt, &form);
+	normalize_flag(fmt, &form);
+	set_size(fmt, &form);
 	read_base(fmt, &form);
 	str = argtoa(&form, list);
 	insert_flag(&str, &form);
+	if (form.letter == 'X')
+		make_X(str);
 	ft_putstr(str);
-	if (form.letter != 'c')
-		*l += ft_strlen(str);
-	else
-		(*l)++;
+	*l += form.length;
+	//*l += strlen(str);
 }
-

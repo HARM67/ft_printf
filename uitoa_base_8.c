@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   uitoa_base_8.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/11 21:42:30 by mfroehly          #+#    #+#             */
+/*   Updated: 2015/12/12 07:43:48 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char	itoc(int i)
 {
 	if (i >= 0 && i <= 9)
-		return ((char) i + '0');
+		return ((char)i + '0');
 	return ((char)i + 'a' - 10);
 }
 
@@ -24,12 +36,12 @@ static char	*r_uitoa(unsigned long int nb, char *tmp, int base)
 
 char		*uitoa_base_8(unsigned long int n, int base)
 {
-	char tmp[21];
+	char tmp[65];
 	char *rt;
 
 	if (n == 0)
 		return (ft_strdup("0"));
-	ft_bzero(tmp, 21);
+	ft_bzero(tmp, 65);
 	r_uitoa(n, tmp, base);
 	rt = ft_strdup(tmp);
 	return (rt);

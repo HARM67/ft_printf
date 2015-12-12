@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   itoa_8.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/11 21:45:22 by mfroehly          #+#    #+#             */
+/*   Updated: 2015/12/12 08:00:07 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char	*r_itoa_8(long int nb, char *tmp)
@@ -23,14 +35,14 @@ static char	*r_itoa_8(long int nb, char *tmp)
 
 char		*itoa_8(long int n)
 {
-	char tmp[12];
+	char tmp[21];
 	char *rt;
 
-	if (n == -9223372036854775807)
-		return (ft_strdup("-9223372036854775807"));
+	if (n == -9223372036854775808)
+		return (ft_strdup("-9223372036854775808"));
 	if (n == 0)
 		return (ft_strdup("0"));
-	ft_bzero(tmp, 12);
+	ft_bzero(tmp, 21);
 	r_itoa_8(n, tmp);
 	rt = ft_strdup(tmp);
 	return (rt);
