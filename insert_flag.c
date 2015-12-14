@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:54:21 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/12 08:18:13 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/14 04:32:30 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	make_devant(t_form *form)
 		form->devant = ft_strdup("+");
 	else if (form->space && form->signe)
 		form->devant = ft_strdup(" ");
-	else if (form->diese && form->letter == 'o')
+	else if (form->diese && (form->letter == 'o' || form->letter == 'O'))
 		form->devant = ft_strdup("0");
 	else if ((form->diese && (form->letter == 'x' || form->letter == 'X')) ||
 		form->letter == 'p')

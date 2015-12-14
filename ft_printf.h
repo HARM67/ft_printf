@@ -6,12 +6,13 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/12 08:40:04 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/14 06:17:22 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# define BUFF_SIZE 4096
 # include "libft.h"
 # include <unistd.h>
 # include <stdarg.h>
@@ -71,7 +72,10 @@ void					read_flag(const char **fmt, t_form *form);
 void					set_size(const char **fmt, t_form *form);
 void					normalize_flag(const char **fmt, t_form *form);
 
-void					print_arg(const char **fmt, va_list *list, int *l);
+char					*print_arg(const char **fmt, va_list *list, int *l);
 
+char					*itounicode(unsigned int u);
+char 					*ltostr(int *l);
 //void					putwchar(int c)
+int						ft_strncon(char **s1, const char *s2, size_t l_s1, size_t n);
 #endif

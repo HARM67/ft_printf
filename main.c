@@ -241,10 +241,15 @@ i = 0;
 
 	ft_printf("%d", -42);*/
 	//test("%p", &i);
-	printf("%S", L"米\n");
-	test("%D", LLONG_MIN - 1);
-	test("%D", LLONG_MIN - 1);
+	//printf("%S", L"米\n");
+	//test("%D", LLONG_MIN - 1);
+	//	test("%D", LLONG_MIN - 1);
 //	test("%04s", "42");
+	//ft_printf("Salut");
+	char test[] = "Mathieu";
+	char *str = ft_strdup("dfglkjHe");
 
+	ft_strncon(&str, test, 2, 6);
+	ft_putstr(str);
 	return (0);
 }

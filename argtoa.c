@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:52:17 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/12 08:45:37 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/14 04:35:02 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static char	*uinttoa_base(t_form *form, va_list *list)
 	unsigned long int tmp;
 
 	tmp = (unsigned long int)va_arg(*list, unsigned long int);
-	if ((form->letter == 'o'|| form->letter == 'O') && tmp == 0)
+	if ((form->letter == 'o'|| form->letter == 'O' || form->letter == 'x' ||
+				form->letter == 'X') && tmp == 0)
 		form->diese = 0;
 	if (form->size == 8 || form->letter == 'O' || form->letter == 'U' ||
 			form->letter == 'p')
@@ -51,8 +52,9 @@ static char	*stoa(t_form *form, va_list *list)
 {
 	char c[5];
 	char *p;
+	int *i;
 
-	//ft_bzero(c, 5);
+	ft_bzero(c, 5);
 	if (form->signe == -1)
 	{
 		c[0] = va_arg(*list, int);
@@ -73,9 +75,14 @@ static char	*stoa(t_form *form, va_list *list)
 		return (ft_strdup(c));
 	}
 	else if (form->signe == -4)
+		return (itounicode((int)va_arg(*list, int)));
+	else if (form->signe == -5)
 	{
-		//*((int *)c) = va_arg(*list, int);
-		return (ft_strdup("a"));
+		i = va_arg(*list, int *);
+		if (i != 0)
+			return (ltostr(i));
+		else
+			return (ft_strdup("(null)"));
 	}
 	return (0);
 }
@@ -85,13 +92,13 @@ char		*argtoa(t_form *form, va_list *list)
 	char *rt;
 
 	rt = 0;
-	if (form->signe >= -3 && form->signe < 0)
+	if (form->signe >= -5 && form->signe < 0)
 		rt = stoa(form, list);
 	else if (form->signe == 0)
 		rt = uinttoa_base(form, list);
 	else if (form->signe == 1)
 		rt = inttoa(form, list);
-	if (form->letter == 'c' && *rt == '\0')
+	if ((form->letter == 'c' || form->letter == 'C') && *rt == '\0')
 		form->length = 1;
 	else
 		form->length = ft_strlen(rt);

@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:47:16 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/14 06:46:17 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/14 05:34:59 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,43 +16,32 @@ int	ft_printf(const char *fmt, ...)
 {
 	va_list	list;
 	int		l;
-	int i;
+	int i = 1;
 	char *str;
 	char *tmp;
-	char tt[1024];
 
 	l = 0;
-	i = 0;
-	str = 0;
 	va_start(list, fmt);
-	ft_bzero(tt, 1024);
-	while (*fmt != 0)
+	while (*fmt != 0 && i)
 	{
 		if (*fmt == '%' && *(fmt + 1) != '%')
 		{
-			tmp = print_arg(&fmt, &list, &i);
-			ft_strncon(&str, tmp, l, i);
-			//free (tmp);
-			l += i;
+			tmp = print_arg(&fmt, &list, &l);
+			ft_strcon(str, tmp, l);
 		}
 		else if (*fmt == '%' && *(fmt + 1) == '%')
 		{
-			//ft_putchar('%');
-			ft_strncon(&str, "%", l, 1);
-			//ft_strcat(tt, "%");
+			ft_putchar('%');
 			fmt += 2;
 			l++;
 		}
 		else
 		{
-			ft_strncon(&str, fmt, l, 1);
-			//ft_strncat(tt, fmt, 1);
-			//ft_putchar(*fmt);
 			l++;
+			ft_putchar(*fmt);
 			fmt++;
 		}
 	}
 	va_end(list);
-	ft_putstr(str);
 	return (l);
 }
