@@ -84,6 +84,7 @@ void		insert_flag(char **str, t_form *form)
 		tmp = ft_strjoin(precision, *str);
 		if (form->devant)
 			tmp = ft_strjoin(form->devant, tmp);
+		free (*str);
 		*str = tmp;
 	}
 	else
@@ -96,6 +97,11 @@ void		insert_flag(char **str, t_form *form)
 			tmp = ft_strjoin(precision, tmp);
 		else
 			tmp = ft_strjoin(tmp, precision);
+		free (*str);
 		*str = tmp;
 	}
+	if (form->devant)
+		free (form->devant);
+	if (precision)
+		free (precision);
 }
