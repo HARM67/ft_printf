@@ -33,6 +33,7 @@ struct					s_form
 	char				l_flag;
 	char				j_flag;
 	char				z_flag;
+	int					longueur;
 	int					precision;
 	char				signe;
 	char				base;

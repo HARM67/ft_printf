@@ -17,8 +17,7 @@ static char	*uinttoa_base(t_form *form, va_list *list)
 	unsigned long int tmp;
 
 	tmp = (unsigned long int)va_arg(*list, unsigned long int);
-	if ((form->letter == 'o'|| form->letter == 'O' || form->letter == 'x' ||
-				form->letter == 'X') && tmp == 0)
+	if (((form->letter == 'o'|| form->letter == 'O')  && tmp == 0 && form->point == 0) || ((form->letter == 'x' || form->letter == 'X') && tmp == 0))
 		form->diese = 0;
 	if (form->size == 8 || form->letter == 'O' || form->letter == 'U' ||
 			form->letter == 'p')
@@ -64,9 +63,14 @@ static char	*stoa(t_form *form, va_list *list)
 	{
 		p = va_arg(*list, char *);
 		if (p != 0)
-			return (ft_strdup(p));
+		{
+			if (form->point && (ft_strlen(p) > form->precision))
+				p[form->precision] == '\0';
+			p = ft_strdup(p);
+		}
 		else
-			return (ft_strdup("(null)"));
+			p = ft_strdup("(null)");
+			return (p);
 	}
 	else if (form->signe == -3)
 	{
@@ -103,7 +107,14 @@ char		*argtoa(t_form *form, va_list *list)
 	else
 		form->length = ft_strlen(rt);
 	if ((form->signe == 0 || form->signe == 1) && *rt == '-')
+	{
 		form->length--;
-
+	}
+	if ((form->signe == 0 || form->signe == 1) && form->point && *rt == '0')
+	{
+		free(rt);
+		rt = strdup("\0");
+		form->length = 0;
+	}
 	return (rt);
 }

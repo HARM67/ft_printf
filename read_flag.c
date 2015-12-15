@@ -14,6 +14,8 @@
 
 static void	read_precision(const char **fmt, t_form *form)
 {
+	form->point = 1;
+	(*fmt)++;
 	form->precision = ft_atoi(*fmt);
 	while (ft_isdigit(**fmt))
 		(*fmt)++;
@@ -60,7 +62,16 @@ void		normalize_flag(const char **fmt, t_form *form)
 	if (form->plus)
 		form->space = 0;
 	if (form->point)
-		form->zero = 1;
+		form->zero = 0;
+}
+
+static void		read_longueur(const char **fmt, t_form *form)
+{
+	form->longueur = ft_atoi(*fmt);
+	while (ft_isdigit(**fmt))
+		(*fmt)++;
+	(*fmt)--;
+
 }
 
 void		read_flag(const char **fmt, t_form *form)
@@ -78,9 +89,9 @@ void		read_flag(const char **fmt, t_form *form)
 		else if (**fmt == '+')
 			form->plus = 1;
 		else if (**fmt == '.')
-			form->point = 1;
-		else if (ft_isdigit(**fmt))
 			read_precision(fmt, form);
+		else if (ft_isdigit(**fmt))
+			read_longueur(fmt, form);
 		else if (**fmt == 'l')
 			form->l_flag++;
 		else if (**fmt == 'j')

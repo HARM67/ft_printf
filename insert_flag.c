@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static char	*make_precision(char **str, t_form *form)
+static char	*make_longueur(char **str, t_form *form)
 {
 	int		len;
 	char	*tmp;
@@ -20,17 +20,16 @@ static char	*make_precision(char **str, t_form *form)
 	len = form->length;
 	//if (form->signe && form->positive == 0)
 	//	len--;
-	if (form->devant != 0 && form->point == 0)
+	if (form->devant != 0)
 		len += ft_strlen(form->devant);
-	if (len >= form->precision)
+	if (len >= form->longueur)
 		return (ft_strdup("\0"));
-	tmp = ft_memalloc(form->precision - len + 1);
-	if (form->zero && form->moin == 0)
-		ft_memset(tmp, '0', form->precision - len);
+	tmp = ft_memalloc(form->longueur - len + 1);
+	if (form->zero && form->moin == 0 && form->point == 0)
+		ft_memset(tmp, '0', form->longueur - len);
 	else
-		ft_memset(tmp, ' ', form->precision - len);
+		ft_memset(tmp, ' ', form->longueur - len);
 	form->length += ft_strlen(tmp);
-
 	return (tmp);
 }
 
@@ -69,19 +68,43 @@ static void	make_devant(t_form *form)
 		form->devant = 0;
 }
 
+static void	make_precision(char **str, t_form *form)
+{
+	int		len;
+	char	*tmp;
+	int		i;
+
+	len = form->length;
+	if (len >= form->precision || form->point == 0)
+		return ;
+	tmp = ft_memalloc(form->precision + 1);
+	ft_memset(tmp, '0', form->precision);
+	i = 0;
+	while (i < len)
+	{
+		tmp[form->precision + i - len] = (*str)[i];
+		i++;
+	}
+	form->length = form->precision;
+	free(*str);
+	*str = tmp;
+}
+
 void		insert_flag(char **str, t_form *form)
 {
-	char	*precision;
+	char	*longueur;
 	char	*tmp;
 
 	retirer_signe(str, form);
 	make_devant(form);
-	precision = make_precision(str, form);
+	if (form->signe >= 0)
+		make_precision(str, form);
+	longueur = make_longueur(str, form);
 	if (form->devant != 0)
 		form->length += ft_strlen(form->devant);
 	if (form->zero && form->moin == 0)
 	{
-		tmp = ft_strjoin(precision, *str);
+		tmp = ft_strjoin(longueur, *str);
 		if (form->devant)
 			tmp = ft_strjoin(form->devant, tmp);
 		free (*str);
@@ -94,14 +117,14 @@ void		insert_flag(char **str, t_form *form)
 		else
 			tmp = *str;
 		if (form->zero == 0 && form->moin == 0)
-			tmp = ft_strjoin(precision, tmp);
+			tmp = ft_strjoin(longueur, tmp);
 		else
-			tmp = ft_strjoin(tmp, precision);
+			tmp = ft_strjoin(tmp, longueur);
 		free (*str);
 		*str = tmp;
 	}
 	if (form->devant)
 		free (form->devant);
-	if (precision)
-		free (precision);
+	if (longueur)
+		free (longueur);
 }
