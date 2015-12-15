@@ -25,7 +25,7 @@ static char	*make_longueur(char **str, t_form *form)
 	if (len >= form->longueur)
 		return (ft_strdup("\0"));
 	tmp = ft_memalloc(form->longueur - len + 1);
-	if (form->zero && form->moin == 0 && form->point == 0)
+	if (form->zero && form->moin == 0 && (form->point == 0 || form->signe < 0))
 		ft_memset(tmp, '0', form->longueur - len);
 	else
 		ft_memset(tmp, ' ', form->longueur - len);
@@ -59,7 +59,8 @@ static void	make_devant(t_form *form)
 		form->devant = ft_strdup("+");
 	else if (form->space && form->signe)
 		form->devant = ft_strdup(" ");
-	else if (form->diese && (form->letter == 'o' || form->letter == 'O'))
+	else if (form->diese && (form->letter == 'o' || form->letter == 'O')
+			&& !(form->point && form->precision != 0))
 		form->devant = ft_strdup("0");
 	else if ((form->diese && (form->letter == 'x' || form->letter == 'X')) ||
 		form->letter == 'p')
@@ -98,6 +99,7 @@ void		insert_flag(char **str, t_form *form)
 	retirer_signe(str, form);
 	make_devant(form);
 	if (form->signe >= 0)
+	//if (form->signe != -2 && form->signe != -5)
 		make_precision(str, form);
 	longueur = make_longueur(str, form);
 	if (form->devant != 0)

@@ -62,7 +62,7 @@ char	*print_arg(const char **fmt, va_list *list, int *l)
 	if ((**fmt) == '\0' )
 		return (ft_strdup("\0"));
 	ft_bzero(&form, sizeof(t_form));
-	read_flag(fmt, &form);
+	read_flag(fmt, &form, list);
 	normalize_flag(fmt, &form);
 	set_size(fmt, &form);
 	read_base(fmt, &form);

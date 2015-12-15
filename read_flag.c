@@ -12,10 +12,15 @@
 
 #include "ft_printf.h"
 
-static void	read_precision(const char **fmt, t_form *form)
+static void	read_precision(const char **fmt, t_form *form, va_list *list)
 {
 	form->point = 1;
 	(*fmt)++;
+	if (**fmt == '*')
+	{
+		form->precision = va_arg(*list, int);
+		return ;
+	}
 	form->precision = ft_atoi(*fmt);
 	while (ft_isdigit(**fmt))
 		(*fmt)++;
@@ -26,7 +31,7 @@ static char	is_flag(char c)
 {
 	if (c == '#' || c == ' ' || c == '-' ||
 			c == '+' || ft_isdigit(c) || c == 'h' ||
-			c == 'l' || c == 'j' || c == 'z' || c == '.')
+			c == 'l' || c == 'j' || c == 'z' || c == '.' || c == '*')
 		return (1);
 	return (0);
 }
@@ -61,12 +66,24 @@ void		normalize_flag(const char **fmt, t_form *form)
 		form->zero = 0;
 	if (form->plus)
 		form->space = 0;
-	if (form->point)
-		form->zero = 0;
+//if (form->point)
+//		form->diese = 0;
+//	if (form->point)
+//		form->zero = 0;
 }
 
-static void		read_longueur(const char **fmt, t_form *form)
+static void		read_longueur(const char **fmt, t_form *form, va_list *list)
 {
+	if (**fmt == '*')
+	{
+		form->longueur = va_arg(*list, int);
+		if (form->longueur < 0)
+		{
+			form->longueur = - form->longueur;
+			form->moin = 1;
+		}
+		return ;
+	}
 	form->longueur = ft_atoi(*fmt);
 	while (ft_isdigit(**fmt))
 		(*fmt)++;
@@ -74,7 +91,7 @@ static void		read_longueur(const char **fmt, t_form *form)
 
 }
 
-void		read_flag(const char **fmt, t_form *form)
+void		read_flag(const char **fmt, t_form *form, va_list *list)
 {
 	while (is_flag(**fmt))
 	{
@@ -89,9 +106,9 @@ void		read_flag(const char **fmt, t_form *form)
 		else if (**fmt == '+')
 			form->plus = 1;
 		else if (**fmt == '.')
-			read_precision(fmt, form);
-		else if (ft_isdigit(**fmt))
-			read_longueur(fmt, form);
+			read_precision(fmt, form, list);
+		else if (ft_isdigit(**fmt) || **fmt == '*')
+			read_longueur(fmt, form, list);
 		else if (**fmt == 'l')
 			form->l_flag++;
 		else if (**fmt == 'j')

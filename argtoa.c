@@ -64,12 +64,14 @@ static char	*stoa(t_form *form, va_list *list)
 		p = va_arg(*list, char *);
 		if (p != 0)
 		{
-			if (form->point && (ft_strlen(p) > form->precision))
-				p[form->precision] == '\0';
 			p = ft_strdup(p);
+			if (form->point && (ft_strlen(p) > form->precision))
+				p[form->precision] = '\0';
 		}
-		else
+		else if (form->point == 0)
 			p = ft_strdup("(null)");
+		else
+			p = ft_strdup("\0");
 			return (p);
 	}
 	else if (form->signe == -3)
@@ -84,9 +86,11 @@ static char	*stoa(t_form *form, va_list *list)
 	{
 		i = va_arg(*list, int *);
 		if (i != 0)
-			return (ltostr(i));
-		else
+			return (ltostr(i, (form->point) ? form->precision : -1));
+		else if (form->point == 0)
 			return (ft_strdup("(null)"));
+		else
+			return (ft_strdup("\0"));
 	}
 	return (0);
 }

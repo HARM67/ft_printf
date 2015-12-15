@@ -29,7 +29,8 @@ int	ft_printf(const char *fmt, ...)
 		if (*fmt == '%' && *(fmt + 1) != '%')
 		{
 			tmp = print_arg(&fmt, &list, &i);
-			ft_strncon(&str, tmp, l, i);
+			ft_strncon(&str, tmp, l, /*i*/ft_strlen(tmp));
+			//ft_putstr(tmp);
 			ft_bzero (tmp, i);
 			free (tmp);
 			tmp = 0;
@@ -38,18 +39,23 @@ int	ft_printf(const char *fmt, ...)
 		else if (*fmt == '%' && *(fmt + 1) == '%')
 		{
 			ft_strncon(&str, "%", l, 1);
+			//ft_putchar('%');
 			fmt += 2;
 			l++;
 		}
 		else
 		{
 			ft_strncon(&str, fmt, l, 1);
+			//ft_putchar(*fmt);
 			l++;
 			fmt++;
 		}
 	}
 	va_end(list);
 	if (str != 0)
+	{
 		ft_putstr(str);
+		free (str);
+	}
 	return (l);
 }

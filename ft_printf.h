@@ -69,14 +69,14 @@ void					insert_flag(char **str, t_form *form);
 
 char					*argtoa(t_form *form, va_list *list);
 
-void					read_flag(const char **fmt, t_form *form);
+void					read_flag(const char **fmt, t_form *form, va_list *list);
 void					set_size(const char **fmt, t_form *form);
 void					normalize_flag(const char **fmt, t_form *form);
 
 char					*print_arg(const char **fmt, va_list *list, int *l);
 
 char					*itounicode(unsigned int u);
-char 					*ltostr(int *l);
+char 					*ltostr(int *l, int l_max);
 //void					putwchar(int c)
 int						ft_strncon(char **s1, const char *s2, size_t l_s1, size_t n);
 #endif

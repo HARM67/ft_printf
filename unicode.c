@@ -53,17 +53,18 @@ char *itounicode(unsigned int u)
 	return (ft_strdup(rt));
 }
 
-char *ltostr(int *l)
+char *ltostr(int *l, int l_max)
 {
 	char *str;
 	int i;
 	char *tmp;
 
-	i = strwlen(l);
+	i = (l_max == -1) ? strwlen(l) : l_max;
 	str = (char*)malloc(i + 1);
 	ft_bzero(str, i);
-	while (*l)
+	while (*l && i > sizeofunicode(*l) - 1)
 	{
+		i -= sizeofunicode(*l);
 		tmp = itounicode(*l++);
 		strcat(str, tmp);
 		free(tmp);

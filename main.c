@@ -34,7 +34,7 @@ int main()
 	int i;
 
 i = 0;
-/*
+
 	test("%p", &i);
 	test("%d", -42);
 	test("% d", 50);
@@ -239,15 +239,15 @@ i = 0;
 	test("%hzu", 30000000000);
 	test("%hU", 30000000000);
 
-	ft_printf("%d", -42);*/
-	//test("%p", &i);
-	//printf("%S", L"米\n");
-	//test("%D", LLONG_MIN - 1);
-	//	test("%D", LLONG_MIN - 1);
-//	test("%04s", "42");
-	//ft_printf("Salut");
-	//ft_printf("");
-//	ft_printf("%#x %#x", 42, 42);
+	ft_printf("%d", -42);
+	test("%p", &i);
+	printf("%S", L"米\n");
+	test("%D", LLONG_MIN - 1);
+		test("%D", LLONG_MIN - 1);
+	test("%04s", "42");
+	ft_printf("Salut");
+	ft_printf("");
+	ft_printf("%#x %#x", 42, 42);
 	test("{%03.2d}", 0);
 	test("{%3.2d}", 0);
 	test("{%+03.2d}", 0);
@@ -280,5 +280,34 @@ i = 0;
 	test2("%#.x, %#.0x", 0, 0);
 	test("%.4s", "42");
 	test("%.4s", "42 is the answer");
+	test("%.0C", L'我');
+	test("%.1C", L'我');
+	test("%.2C", L'"我');
+	test("%.3C", L'我');
+	test("%.4C", L'我');
+	test("%.5C", L'我');
+	test("%.S", L"我是一只猫。");
+	test("%.0S", L"我是一只猫。");
+	test("%.3S", L"我是一只猫。");
+	test("%.4S", L"我是一只猫。");
+	test("%.5S", L"我是一只猫。");
+	test("%.6S", L"我是一只猫。");
+	test("%.7S", L"我是一只猫。");
+	test("%.8S", L"我是一只猫。");
+	test("%05.c", 0);
+	test("%05.C", 0);
+	test("%05.s", 0);
+	test("%05.S", 0);
+	test("%010.s", 0);
+	test("%010.S", 0);
+	test("%010s", 0);
+	test("%010S", 0);
+	test("%#.O", 0);
+	test("%#.3o", 1);
+	test2("%*d", 5, 42);
+	test2("%*d", 15, 42);
+	test2("%*d", -5, 42);
+	
+	test2("{%*c}", -15, 0);
 	return (0);
 }
