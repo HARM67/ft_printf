@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:54:21 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 17:47:06 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:32:29 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,29 +104,26 @@ void		insert_flag(char **str, t_form *form)
 		form->length += ft_strlen(form->devant);
 	if (form->zero && form->moin == 0)
 	{
-		tmp = ft_strjoin(longueur, *str);
+		tmp = ft_strncon(&longueur, str, -1, -1, 0x2 | 0x8);
 		if (form->devant)
-			tmp = ft_strjoin(form->devant, tmp);
-		free (*str);
+			ft_strncon(&form->devant, &tmp, -1, -1, 0x2 | 0x8 | 0x20);
 		*str = tmp;
 	}
 	else
 	{
 		if (form->devant)
-			tmp = ft_strjoin(form->devant, *str);
+			tmp = ft_strncon(&form->devant, str, -1, -1, 0x2 | 0x8);
 		else
 			tmp = *str;
 		if (form->zero == 0 && form->moin == 0)
-			tmp = ft_strncon(&longueur, &tmp, -1, form->length, 0);
+			ft_strncon(&longueur, &tmp, -1, form->length, 0x8 |  0x20 | 0x2);
 		else
-			tmp = ft_strncon(&tmp, &longueur, form->length, -1, 0);
-			//tmp = ft_strjoin(tmp, longueur);
-		free (*str);
+			ft_strncon(&tmp, &longueur, form->length, -1, 0x4 | 0x10 | 0x1);
 		*str = tmp;
 	}
 	form->length += ft_strlen(longueur);
 	if (form->devant)
 		free (form->devant);
-	//if (longueur)
-	//	free (longueur);
+	if (longueur)
+		free (longueur);
 }

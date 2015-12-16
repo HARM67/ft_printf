@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 16:13:16 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 17:28:02 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 18:20:19 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ char	*ft_strncon(char **s1, char **s2, size_t l_s1, size_t l_s2, int flag)
 		i++;
 	}
 	rt[l_s1 + l_s2] = 0;
-	(flag & 0x4  && *s1) ? ft_bzero(*s1, l_s1) : 0;
-	(flag & 0x8  && *s2) ? ft_bzero(*s2, l_s2) : 0;
-	(flag & 0x1  && *s1) ? free(*s1) : 0;
-	(flag & 0x2  && *s2) ? free(*s2) : 0;
+	(flag & 0x4) ? ft_bzero(*s1, l_s1) : 0;
+	(flag & 0x8) ? ft_bzero(*s2, l_s2) : 0;
+	(flag & 0x1) ? free(*s1) : 0;
+	(flag & 0x2) ? free(*s2) : 0;
+	*s1 = (flag & 0x10) ? rt : *s1;
+	*s2 = (flag & 0x20) ? rt : *s2;
 	return (rt);
 }

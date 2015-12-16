@@ -51,7 +51,7 @@ $(NAME) : $(OBJ)
 $(SRC) :
 	gcc -c $(SRC) $(FLAG) 
 
-test : fclean all
+test : all
 	gcc main.c $(FLAG) $(NAME) -I./
 	./a.out
 
