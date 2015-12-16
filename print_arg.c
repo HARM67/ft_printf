@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:06:37 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 10:38:06 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:43:15 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static	void	read_base(const char **fmt, t_form *form)
  		form->signe = -2;
 	else if (**fmt == 'S' || (**fmt == 's' && form->l_flag))
  		form->signe = -5;
-	else if (**fmt == 'f' || (**fmt == 'F' && form->l_flag))
+	else if (**fmt == 'f' || **fmt == 'F')
  		form->signe = -6;
 	else
 		form->signe = -3;
@@ -69,10 +69,10 @@ char	*print_arg(const char **fmt, va_list *list, int *l)
 	set_size(fmt, &form);
 	read_base(fmt, &form);
 	str = argtoa(&form, list);
+	ft_putnbr(form.zero);
 	insert_flag(&str, &form);
 	if (form.letter == 'X')
 		make_X(str);
-	//ft_putstr(str);
 	*l = form.length;
 	return (str);
 }

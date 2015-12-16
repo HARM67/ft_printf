@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:52:17 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 10:40:38 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:32:23 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,12 @@ char		*argtoa(t_form *form, va_list *list)
 	else if (form->signe == 1)
 		rt = inttoa(form, list);
 	else if (form->signe == -6)
-		rt = ftoa(va_arg(*list, double), 5);
+		rt = ftoa(va_arg(*list, double), 6);
 	if ((form->letter == 'c' || form->letter == 'C') && *rt == '\0')
 		form->length = 1;
 	else
 		form->length = ft_strlen(rt);
-	if ((form->signe == 0 || form->signe == 1) && *rt == '-')
+	if ((form->signe == 0 || form->signe == 1 || form->signe == -6) && *rt == '-')
 	{
 		form->length--;
 	}

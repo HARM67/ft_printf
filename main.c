@@ -3,6 +3,18 @@
 #include <limits.h>
 #include <locale.h>
 
+void	test_f(char *str, double i)
+{
+	int rt;
+	int rt2;
+
+	printf("   printf(\"%s\") : '", str);
+	rt = printf(str, i);
+	printf("' = %d\n", rt);
+	ft_printf("ft_printf(\"%s\") : '", str);
+	rt2 = ft_printf(str, i);
+	ft_printf("' = %d\n\n", rt2);
+}
 void	test(char *str, long int i)
 {
 	int rt;
@@ -30,12 +42,11 @@ void	test2(char *str, long int i, long int j)
 
 int main()
 {
-	/*
 	setlocale(LC_ALL, "");
 	int i;
 
 i = 0;
-
+/*
 	test("%p", &i);
 	test("%d", -42);
 	test("% d", 50);
@@ -316,8 +327,16 @@ ft_putchar('\n');
 	//printf("{%C,}%cpoiusdf%d\n",L'米' ,0, L'米');
 	//printf("%.2f",12345678912345.12611);
 	//ft_printf("{%c, %hhC}", 0, L'米');
-	ft_printf("%f", 7800610.50);
+	//test_f("%f", 1.42);
+	//test_f("%f", -1.42);
+	//test_f("{%f}{%F}", 1444565444646.6465424242242);
 
-	//test("{% c}", 0);
+	//test2("{%05.*d}", -15, 42);
+	/*double a, b;
+
+	b = a = 123456789.123456789;
+	printf("%f    %f\n", a /= 10, b / 10);
+	*/
+	ft_printf("{%-15c}", 0);
 	return (0);
 }

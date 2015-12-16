@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:05:36 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/12 00:41:59 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 14:16:00 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 static void	read_precision(const char **fmt, t_form *form, va_list *list)
 {
-	form->point = 1;
+	int tmp;
+
 	(*fmt)++;
 	if (**fmt == '*')
 	{
-		form->precision = va_arg(*list, int);
+		tmp = va_arg(*list, int);
+		if (tmp >= 0)
+		{
+			form->precision = tmp;
+			form->point = 1;
+		}
 		return ;
 	}
-	form->precision = ft_atoi(*fmt);
+	else
+		form->precision = ft_atoi(*fmt);
+	form->point = 1;
 	while (ft_isdigit(**fmt))
 		(*fmt)++;
 	(*fmt)--;
@@ -84,7 +92,8 @@ static void		read_longueur(const char **fmt, t_form *form, va_list *list)
 		}
 		return ;
 	}
-	form->longueur = ft_atoi(*fmt);
+	else
+		form->longueur = ft_atoi(*fmt);
 	while (ft_isdigit(**fmt))
 		(*fmt)++;
 	(*fmt)--;

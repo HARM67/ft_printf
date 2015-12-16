@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:47:16 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 07:24:33 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:22:59 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	ft_printf(const char *fmt, ...)
 	va_end(list);
 	if (str != 0)
 	{
-		ft_putstr(str);
+//		ft_putstr(str);
+		write(1, str, l);
 		free (str);
 	}
 	return (l);
