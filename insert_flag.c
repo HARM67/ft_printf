@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:54:21 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 14:07:44 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 17:47:06 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static char	*make_longueur(char **str, t_form *form)
 		ft_memset(tmp, '0', form->longueur - len);
 	else
 		ft_memset(tmp, ' ', form->longueur - len);
-	form->length += ft_strlen(tmp);
 	return (tmp);
 }
 
@@ -99,7 +98,6 @@ void		insert_flag(char **str, t_form *form)
 	retirer_signe(str, form);
 	make_devant(form);
 	if (form->signe >= 0)
-	//if (form->signe != -2 && form->signe != -5)
 		make_precision(str, form);
 	longueur = make_longueur(str, form);
 	if (form->devant != 0)
@@ -119,14 +117,16 @@ void		insert_flag(char **str, t_form *form)
 		else
 			tmp = *str;
 		if (form->zero == 0 && form->moin == 0)
-			tmp = ft_strjoin(longueur, tmp);
+			tmp = ft_strncon(&longueur, &tmp, -1, form->length, 0);
 		else
-			tmp = ft_strjoin(tmp, longueur);
+			tmp = ft_strncon(&tmp, &longueur, form->length, -1, 0);
+			//tmp = ft_strjoin(tmp, longueur);
 		free (*str);
 		*str = tmp;
 	}
+	form->length += ft_strlen(longueur);
 	if (form->devant)
 		free (form->devant);
-	if (longueur)
-		free (longueur);
+	//if (longueur)
+	//	free (longueur);
 }

@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:47:16 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 16:22:59 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 17:45:03 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,21 @@ int	ft_printf(const char *fmt, ...)
 		if (*fmt == '%' && *(fmt + 1) != '%')
 		{
 			tmp = print_arg(&fmt, &list, &i);
-			ft_strncon(&str, tmp, l, /*i*/ft_strlen(tmp));
-			//ft_putstr(tmp);
-			ft_bzero (tmp, i);
-			free (tmp);
-			tmp = 0;
+			str = ft_strncon(&str, &tmp, l, ft_strlen(tmp), 0x1| 0x2 | 0x8);
 			l += i;
 		}
 		else if (*fmt == '%' && *(fmt + 1) == '%')
 		{
-			ft_strncon(&str, "%", l, 1);
+			tmp = ft_strdup("%");
+			str = ft_strncon(&str, &tmp, l, 1, 0x1 | 0x2);
 			//ft_putchar('%');
 			fmt += 2;
 			l++;
 		}
 		else
 		{
-			ft_strncon(&str, fmt, l, 1);
+			tmp = (char*)fmt;
+			str = ft_strncon(&str, &tmp, l, 1, 0x1);
 			//ft_putchar(*fmt);
 			l++;
 			fmt++;

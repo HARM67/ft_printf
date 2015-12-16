@@ -337,6 +337,6 @@ ft_putchar('\n');
 	b = a = 123456789.123456789;
 	printf("%f    %f\n", a /= 10, b / 10);
 	*/
-	ft_printf("{%-15c}", 0);
+	ft_printf("{%*c}", -15, 0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:06:37 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 16:43:15 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 16:50:28 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ char	*print_arg(const char **fmt, va_list *list, int *l)
 	set_size(fmt, &form);
 	read_base(fmt, &form);
 	str = argtoa(&form, list);
-	ft_putnbr(form.zero);
 	insert_flag(&str, &form);
 	if (form.letter == 'X')
 		make_X(str);
