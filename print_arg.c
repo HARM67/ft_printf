@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:06:37 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/14 06:04:33 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 10:38:06 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static	void	read_base(const char **fmt, t_form *form)
  		form->signe = -2;
 	else if (**fmt == 'S' || (**fmt == 's' && form->l_flag))
  		form->signe = -5;
+	else if (**fmt == 'f' || (**fmt == 'F' && form->l_flag))
+ 		form->signe = -6;
 	else
 		form->signe = -3;
 	(*fmt)++;

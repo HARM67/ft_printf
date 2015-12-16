@@ -30,6 +30,7 @@ void	test2(char *str, long int i, long int j)
 
 int main()
 {
+	/*
 	setlocale(LC_ALL, "");
 	int i;
 
@@ -307,7 +308,16 @@ i = 0;
 	test2("%*d", 5, 42);
 	test2("%*d", 15, 42);
 	test2("%*d", -5, 42);
-	
-	test2("{%*c}", -15, 0);
+	printf("{%c}\n", '\0');
+ft_putchar('\n');
+	ft_printf("{%c}", '\0');
+	printf("{%c}", 0);
+	*/
+	//printf("{%C,}%cpoiusdf%d\n",L'米' ,0, L'米');
+	//printf("%.2f",12345678912345.12611);
+	//ft_printf("{%c, %hhC}", 0, L'米');
+	ft_printf("%f", 7800610.50);
+
+	//test("{% c}", 0);
 	return (0);
 }

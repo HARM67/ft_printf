@@ -48,7 +48,7 @@ char *itounicode(unsigned int u)
 		rt[0] = 0xF0 + ((u >> 18) & 0xF);
 		rt[1] = 0x80 + ((u >> 12) & 0x3F);
 		rt[2] = 0x80 + ((u >> 6) & 0x3F);
-		rt[3] = 0x80 + (u & 0x3F);
+		rt[3] = 0x80 + (u & 0x7);
 	}
 	return (ft_strdup(rt));
 }

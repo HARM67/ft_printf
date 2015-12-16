@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/14 06:17:22 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/16 10:39:15 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,6 @@ char					*itounicode(unsigned int u);
 char 					*ltostr(int *l, int l_max);
 //void					putwchar(int c)
 int						ft_strncon(char **s1, const char *s2, size_t l_s1, size_t n);
+
+char					*ftoa(double n, int precision);
 #endif
