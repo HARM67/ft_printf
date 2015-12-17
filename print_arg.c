@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:06:37 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 07:34:51 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:44:14 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ static	void	read_base_nbr(const char **fmt, t_form *form)
 		form->base = 16;
 	else if (**fmt == 'f' || **fmt == 'F')
 		form->signe = -6;
+	else if (**fmt == 'n')
+		form->signe = -7;
 	else
 		read_base_character(fmt, form);
 	(*fmt)++;
@@ -66,6 +68,7 @@ char			*print_arg(const char **fmt, va_list *list, int *l)
 	if ((**fmt) == '\0')
 		return (ft_strdup("\0"));
 	ft_bzero(&form, sizeof(t_form));
+	form.total_length = *l;
 	read_flag(fmt, &form, list);
 	normalize_flag(fmt, &form);
 	set_size(fmt, &form);
@@ -74,6 +77,6 @@ char			*print_arg(const char **fmt, va_list *list, int *l)
 	insert_flag(&str, &form);
 	if (form.letter == 'X')
 		make_x(str);
-	*l = form.length;
+	*l += form.length;
 	return (str);
 }

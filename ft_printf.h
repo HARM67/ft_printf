@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 09:22:44 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:38:41 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ struct					s_form
 	char				positive;
 	char				*devant;
 	unsigned long int	length;
+	unsigned long int	total_length;
 };
 
 union					u_arg
@@ -93,4 +94,5 @@ char					*ft_strncon(char **s1, char **s2, size_t l, int flag);
 char					*ftoa(double n, int precision);
 
 char					*stoa(t_form *form, va_list *list);
+char					*n_base(t_form *form, va_list *list);
 #endif

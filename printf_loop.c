@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 09:21:51 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 10:14:47 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 15:43:31 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 static void	recup_arg(const char **fmt, va_list *list, char **str, int *l)
 {
-	int		i;
+	int i;
 	char	*tmp;
 
-	i = 0;
-	tmp = print_arg(fmt, list, &i);
-	ft_strncon(str, &tmp, *l, 0x40 | 0x1 | 0x4 | 0x2 | 0x8 | 0x10);
-	*l += i;
+	i = *l;
+	tmp = print_arg(fmt, list, l);
+	ft_strncon(str, &tmp, i, 0x40 | 0x1 | 0x4 | 0x2 | 0x8 | 0x10);
 }
 
 static void	print_pourcent(const char **fmt, char **str, int *l)
