@@ -20,7 +20,8 @@ SRC = ft_printf.c itoa_4.c itoa_2.c itoa_1.c itoa_8.c \
 		ft_putendl.c ft_putstr_fd.c ft_putnbr_fd.c ft_itoa.c\
 		ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
 		ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
-		unicode.c ft_strncon.h ftoa.c
+		unicode.c ft_strncon.h ftoa.c flag_tool.c \ stoa.c make_str.c \
+		printf_loop.c
 OBJ = ft_printf.o itoa_4.o itoa_2.o itoa_1.o itoa_8.o \
 		uitoa_base_1.o uitoa_base_2.o uitoa_base_4.o uitoa_base_8.o \
 		insert_flag.o argtoa.o read_flag.o print_arg.o \
@@ -40,8 +41,8 @@ OBJ = ft_printf.o itoa_4.o itoa_2.o itoa_1.o itoa_8.o \
 		ft_putendl.o ft_putstr_fd.o ft_putnbr_fd.o ft_itoa.o\
 		ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstdelone.o \
 		ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o \
-		unicode.o ft_strncon.o ftoa.o
-
+		unicode.o ft_strncon.o ftoa.o flag_tool.o stoa.o make_str.o \
+		printf_loop.o
 all : $(NAME)
 
 $(NAME) : $(OBJ)
@@ -63,3 +64,5 @@ clean :
 
 fclean : clean
 	rm -f $(NAME)
+
+re: fclean all

@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:52:17 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 16:32:23 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 08:08:04 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static char	*uinttoa_base(t_form *form, va_list *list)
 	unsigned long int	tmp;
 
 	tmp = (unsigned long int)va_arg(*list, unsigned long int);
-	if (((form->letter == 'o'|| form->letter == 'O')  && tmp == 0 && form->point == 0) || ((form->letter == 'x' || form->letter == 'X') && tmp == 0))
+	if (((form->letter == 'o' || form->letter == 'O')
+				&& tmp == 0 && form->point == 0)
+			|| ((form->letter == 'x' || form->letter == 'X') && tmp == 0))
 		form->diese = 0;
 	if (form->size == 8 || form->letter == 'O' || form->letter == 'U' ||
 			form->letter == 'p')
@@ -47,52 +49,23 @@ static char	*inttoa(t_form *form, va_list *list)
 	return (0);
 }
 
-static char	*stoa(t_form *form, va_list *list)
+static void	arg_conform(t_form *form, char **rt)
 {
-	char	c[5];
-	char	*p;
-	int		*i;
-
-	ft_bzero(c, 5);
-	if (form->signe == -1)
+	if ((form->letter == 'c' || form->letter == 'C') && **rt == '\0')
+		form->length = 1;
+	else
+		form->length = ft_strlen(*rt);
+	if ((form->signe == 0 || form->signe == 1 || form->signe == -6)
+			&& **rt == '-')
 	{
-		c[0] = va_arg(*list, int);
-		return (ft_strdup(c));
+		form->length--;
 	}
-	else if (form->signe == -2)
+	if ((form->signe == 0 || form->signe == 1) && form->point && **rt == '0')
 	{
-		p = va_arg(*list, char *);
-		if (p != 0)
-		{
-			p = ft_strdup(p);
-			if (form->point && (ft_strlen(p) > form->precision))
-				p[form->precision] = '\0';
-		}
-		else if (form->point == 0)
-			p = ft_strdup("(null)");
-		else
-			p = ft_strdup("\0");
-			return (p);
+		free(*rt);
+		*rt = strdup("\0");
+		form->length = 0;
 	}
-	else if (form->signe == -3)
-	{
-		c[0] = form->letter;
-		form->letter = 'c';
-		return (ft_strdup(c));
-	}
-	else if (form->signe == -4)
-		return (itounicode((int)va_arg(*list, int)));
-	else if (form->signe == -5)
-	{
-		i = va_arg(*list, int *);
-		if (i != 0)
-			return (ltostr(i, (form->point) ? form->precision : -1));
-		else if (form->point == 0)
-			return (ft_strdup("(null)"));
-		else
-			return (ft_strdup("\0"));
-	}
-	return (0);
 }
 
 char		*argtoa(t_form *form, va_list *list)
@@ -108,19 +81,6 @@ char		*argtoa(t_form *form, va_list *list)
 		rt = inttoa(form, list);
 	else if (form->signe == -6)
 		rt = ftoa(va_arg(*list, double), 6);
-	if ((form->letter == 'c' || form->letter == 'C') && *rt == '\0')
-		form->length = 1;
-	else
-		form->length = ft_strlen(rt);
-	if ((form->signe == 0 || form->signe == 1 || form->signe == -6) && *rt == '-')
-	{
-		form->length--;
-	}
-	if ((form->signe == 0 || form->signe == 1) && form->point && *rt == '0')
-	{
-		free(rt);
-		rt = strdup("\0");
-		form->length = 0;
-	}
+	arg_conform(form, &rt);
 	return (rt);
 }

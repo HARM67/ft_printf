@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unicode.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/12/17 08:21:51 by mfroehly          #+#    #+#             */
+/*   Updated: 2015/12/17 10:15:11 by mfroehly         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int sizeofunicode(int u)
+static int	sizeofunicode(int u)
 {
 	if (u < 128)
 		return (1);
@@ -11,7 +23,7 @@ int sizeofunicode(int u)
 	return (4);
 }
 
-int	strwlen(int *u)
+static int	strwlen(int *u)
 {
 	int i;
 
@@ -24,7 +36,7 @@ int	strwlen(int *u)
 	return (i);
 }
 
-char *itounicode(unsigned int u)
+char		*itounicode(unsigned int u)
 {
 	char rt[5];
 	char *p;
@@ -53,11 +65,11 @@ char *itounicode(unsigned int u)
 	return (ft_strdup(rt));
 }
 
-char *ltostr(int *l, int l_max)
+char		*ltostr(int *l, int l_max)
 {
-	char *str;
-	int i;
-	char *tmp;
+	char	*str;
+	int		i;
+	char	*tmp;
 
 	i = (l_max == -1) ? strwlen(l) : l_max;
 	str = (char*)malloc(i + 1);

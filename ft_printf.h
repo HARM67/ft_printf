@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 17:06:30 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 09:22:44 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ union					u_arg
 };
 
 int						ft_printf(const char *fmt, ...);
+int						printf_loop(const char *fmt, char **str, va_list *list);
 
 char					*uitoa_base_1(unsigned char n, int base);
 char					*uitoa_base_2(unsigned short int n, int base);
@@ -67,19 +68,29 @@ char					*itoa_8(long int n);
 
 void					insert_flag(char **str, t_form *form);
 
+char					*make_longueur(char **str, t_form *form);
+void					make_devant(t_form *form);
+void					make_precision(char **str, t_form *form);
+void					make_flagstr(char **str, t_form *form, char *longueur);
+
 char					*argtoa(t_form *form, va_list *list);
 
 void					read_flag(const char **fmt, t_form *form, va_list *list);
+
+void					read_longueur(const char **fmt, t_form *form, va_list *list);
 void					set_size(const char **fmt, t_form *form);
 void					normalize_flag(const char **fmt, t_form *form);
+char					is_flag(char c);
+void					read_precision(const char **fmt, t_form *form, va_list *list);
 
 char					*print_arg(const char **fmt, va_list *list, int *l);
 
 char					*itounicode(unsigned int u);
 char 					*ltostr(int *l, int l_max);
 //void					putwchar(int c)
-char					*ft_strncon(char **s1, char **s2, size_t l_s1, 
-						size_t n, int flag);
+char					*ft_strncon(char **s1, char **s2, size_t l, int flag);
 
 char					*ftoa(double n, int precision);
+
+char					*stoa(t_form *form, va_list *list);
 #endif

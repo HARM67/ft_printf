@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:43:32 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/16 19:17:22 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 08:55:18 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static char	*r_ftoae(double nb, char *tmp, int precision)
 	else if (nb >= 10.0)
 	{
 		rt = r_ftoae(nb / 10.0, tmp, precision);
-		*rt =((long int)nb % 10) + '0';
+		*rt = ((long int)nb % 10) + '0';
 		return (rt + 1);
 	}
 	else if ((long int)nb > 0)
@@ -51,7 +51,7 @@ static void	r_ftoai(double nb, char *tmp, int precision)
 	}
 }
 
-static	void	make_fprecision(char *str, int precision)
+static void	make_fprecision(char *str, int precision)
 {
 	if (str[precision + 1] >= '5')
 	{
