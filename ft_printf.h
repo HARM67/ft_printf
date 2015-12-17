@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 15:38:41 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 16:26:56 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ char					*ftoa(double n, int precision);
 
 char					*stoa(t_form *form, va_list *list);
 char					*n_base(t_form *form, va_list *list);
+void					make_color(const char **fmt, char **str, int *l);
 #endif

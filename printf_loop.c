@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 09:21:51 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 15:43:31 by mfroehly         ###   ########.fr       */
+/*   Updated: 2015/12/17 16:36:03 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int			printf_loop(const char *fmt, char **str, va_list *list)
 			recup_arg(&fmt, list, str, &l);
 		else if (*fmt == '%' && *(fmt + 1) == '%')
 			print_pourcent(&fmt, str, &l);
+		//else if (*fmt == '{')
+		//	make_color(&fmt, str, &l);
 		else
 			print_character(&fmt, str, &l);
 	}

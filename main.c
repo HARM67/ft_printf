@@ -361,17 +361,18 @@ ft_putchar('\n');
 	testn("Salut %nmathieu");
 	testn("%nSalut mathieu");
 	testn("Salut mathieudfgdsafsadfsdf\ndsfasdfsdaf %n");
-*/
+
 	int o, o2;
 	testn2("Mon nom est %s%n et je suis a 42", "Mathieu");
 	testn2("J'ai %d%n ans", 28);
 
 
-/*
+
 	ft_printf("\033[45mSalut");
 	ft_printf("\033[1m\033[45mSalut");
 	ft_printf("\033[1m\033[4mSalut");
 	*/
 //	ft_printf("Salut%d", 7850);
+	ft_printf("Salut{FG_RED} Je suis rouge{EOC}et le je ne le suis plus\n{BG_RED}fond rouge{EOC}");
 	return (0);
 }
