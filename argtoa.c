@@ -22,7 +22,7 @@ static char	*uinttoa_base(t_form *form, va_list *list)
 			|| ((form->letter == 'x' || form->letter == 'X') && tmp == 0))
 		form->diese = 0;
 	if (form->size == 8 || form->letter == 'O' || form->letter == 'U' ||
-			form->letter == 'p')
+			form->letter == 'p' || form->letter == 'B')
 		return (uitoa_base_8(tmp, form->base));
 	else if (form->size == 1)
 		return (uitoa_base_1((unsigned char)tmp, form->base));

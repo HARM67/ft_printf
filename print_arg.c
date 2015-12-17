@@ -44,6 +44,8 @@ static	void	read_base_nbr(const char **fmt, t_form *form)
 		form->signe = -6;
 	else if (**fmt == 'n')
 		form->signe = -7;
+	else if (**fmt == 'b' || **fmt == 'B')
+		form->base = 2;
 	else
 		read_base_character(fmt, form);
 	(*fmt)++;

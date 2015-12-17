@@ -54,8 +54,8 @@ int			printf_loop(const char *fmt, char **str, va_list *list)
 			recup_arg(&fmt, list, str, &l);
 		else if (*fmt == '%' && *(fmt + 1) == '%')
 			print_pourcent(&fmt, str, &l);
-		//else if (*fmt == '{')
-		//	make_color(&fmt, str, &l);
+		else if (*fmt == '{')
+			make_color(&fmt, str, &l);
 		else
 			print_character(&fmt, str, &l);
 	}
