@@ -14,7 +14,7 @@
 
 static char	*uinttoa_base(t_form *form, va_list *list)
 {
-	unsigned long int tmp;
+	unsigned long int	tmp;
 
 	tmp = (unsigned long int)va_arg(*list, unsigned long int);
 	if (((form->letter == 'o'|| form->letter == 'O')  && tmp == 0 && form->point == 0) || ((form->letter == 'x' || form->letter == 'X') && tmp == 0))
@@ -49,9 +49,9 @@ static char	*inttoa(t_form *form, va_list *list)
 
 static char	*stoa(t_form *form, va_list *list)
 {
-	char c[5];
-	char *p;
-	int *i;
+	char	c[5];
+	char	*p;
+	int		*i;
 
 	ft_bzero(c, 5);
 	if (form->signe == -1)

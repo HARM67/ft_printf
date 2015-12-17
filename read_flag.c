@@ -74,10 +74,6 @@ void		normalize_flag(const char **fmt, t_form *form)
 		form->zero = 0;
 	if (form->plus)
 		form->space = 0;
-//if (form->point)
-//		form->diese = 0;
-//	if (form->point)
-//		form->zero = 0;
 }
 
 static void		read_longueur(const char **fmt, t_form *form, va_list *list)

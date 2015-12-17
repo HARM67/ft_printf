@@ -18,8 +18,6 @@ static char	*make_longueur(char **str, t_form *form)
 	char	*tmp;
 
 	len = form->length;
-	//if (form->signe && form->positive == 0)
-	//	len--;
 	if (form->devant != 0)
 		len += ft_strlen(form->devant);
 	if (len >= form->longueur)

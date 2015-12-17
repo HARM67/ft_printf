@@ -62,12 +62,9 @@ static	void	make_fprecision(char *str, int precision)
 
 char		*ftoa(double n, int precision)
 {
-	char tmp[50];
-	char tmp2[precision + 2];
-	char *rt;
-
-	//n = ((long int)(n * 100.0)) / 1000.0;
-
+	char	tmp[50];
+	char	tmp2[precision + 2];
+	char	*rt;
 
 	if (n == 0)
 		return (ft_strdup("0.0"));
@@ -75,7 +72,7 @@ char		*ftoa(double n, int precision)
 	ft_bzero(tmp2, precision + 2);
 	r_ftoae(n, tmp, precision + 1);
 	r_ftoai(n, tmp2, precision + 1);
-	//make_fprecision(tmp2, precision);
+	make_fprecision(tmp2, precision);
 	rt = ft_strjoin(tmp, tmp2);
 	return (rt);
 }

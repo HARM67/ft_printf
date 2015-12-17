@@ -12,13 +12,17 @@
 
 #include "ft_printf.h"
 
-static	void	read_base(const char **fmt, t_form *form)
+static void		init_base(const char **fmt, t_form *form)
 {
-	while (**fmt == ' ')
-		(*fmt)++;
+	//while (**fmt == ' ')
+	//	(*fmt)++;
 	form->signe = 0;
 	form->maj = 0;
 	form->letter = **fmt;
+}
+
+static	void	read_base(const char **fmt, t_form *form)
+{
 	if (**fmt == 'i' || **fmt == 'd' || **fmt == 'D')
 	{
 		form->signe = 1;
@@ -67,6 +71,7 @@ char	*print_arg(const char **fmt, va_list *list, int *l)
 	read_flag(fmt, &form, list);
 	normalize_flag(fmt, &form);
 	set_size(fmt, &form);
+	init_base(fmt, &form);
 	read_base(fmt, &form);
 	str = argtoa(&form, list);
 	insert_flag(&str, &form);
