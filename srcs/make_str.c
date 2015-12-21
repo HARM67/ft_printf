@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-char	*make_longueur(char **str, t_form *form)
+char	*make_longueur(t_form *form)
 {
 	int		len;
 	char	*tmp;
@@ -53,7 +53,7 @@ void	make_devant(t_form *form)
 
 void	make_precision(char **str, t_form *form)
 {
-	int		len;
+	size_t	len;
 	char	*tmp;
 	int		i;
 
@@ -63,7 +63,7 @@ void	make_precision(char **str, t_form *form)
 	tmp = ft_memalloc(form->precision + 1);
 	ft_memset(tmp, '0', form->precision);
 	i = 0;
-	while (i < len)
+	while ((unsigned int)i < len)
 	{
 		tmp[form->precision + i - len] = (*str)[i];
 		i++;

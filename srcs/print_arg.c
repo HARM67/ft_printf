@@ -72,8 +72,8 @@ char			*print_arg(const char **fmt, va_list *list, int *l)
 	ft_bzero(&form, sizeof(t_form));
 	form.total_length = *l;
 	read_flag(fmt, &form, list);
-	normalize_flag(fmt, &form);
-	set_size(fmt, &form);
+	normalize_flag(&form);
+	set_size(&form);
 	read_base_nbr(fmt, &form);
 	str = argtoa(&form, list);
 	insert_flag(&str, &form);

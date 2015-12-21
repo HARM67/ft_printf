@@ -45,7 +45,6 @@ static void	print_character(const char **fmt, char **str, int *l)
 int			printf_loop(const char *fmt, char **str, va_list *list)
 {
 	int		l;
-	char	*tmp;
 
 	l = 0;
 	while (*fmt != 0)

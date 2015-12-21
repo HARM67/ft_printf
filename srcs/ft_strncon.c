@@ -15,11 +15,9 @@
 char	*ft_strncon(char **s1, char **s2, size_t l, int flag)
 {
 	char	*rt;
-	int		i;
 	int		l_s1;
 	int		l_s2;
 
-	i = 0;
 	l_s1 = (flag & 0x40) ? l : ft_strlen(*s1);
 	l_s2 = (flag & 0x80) ? l : ft_strlen(*s2);
 	rt = ft_memalloc(sizeof(char) * (l_s1 + l_s2 + 1));

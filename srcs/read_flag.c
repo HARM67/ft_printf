@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static void	read_flag_size(const char **fmt, t_form *form, va_list *list)
+static void	read_flag_size(const char **fmt, t_form *form)
 {
 	if (**fmt == 'l')
 		form->l_flag++;
@@ -43,7 +43,7 @@ void		read_flag(const char **fmt, t_form *form, va_list *list)
 		else if (ft_isdigit(**fmt) || **fmt == '*')
 			read_longueur(fmt, form, list);
 		else
-			read_flag_size(fmt, form, list);
+			read_flag_size(fmt, form);
 		(*fmt)++;
 	}
 }

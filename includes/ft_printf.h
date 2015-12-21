@@ -34,7 +34,7 @@ struct					s_form
 	char				j_flag;
 	char				z_flag;
 	int					longueur;
-	int					precision;
+	size_t				precision;
 	char				signe;
 	char				base;
 	unsigned long		size;
@@ -69,7 +69,7 @@ char					*itoa_8(long int n);
 
 void					insert_flag(char **str, t_form *form);
 
-char					*make_longueur(char **str, t_form *form);
+char					*make_longueur(t_form *form);
 void					make_devant(t_form *form);
 void					make_precision(char **str, t_form *form);
 void					make_flagstr(char **str, t_form *form, char *longueur);
@@ -79,8 +79,8 @@ char					*argtoa(t_form *form, va_list *list);
 void					read_flag(const char **fmt, t_form *form, va_list *list);
 
 void					read_longueur(const char **fmt, t_form *form, va_list *list);
-void					set_size(const char **fmt, t_form *form);
-void					normalize_flag(const char **fmt, t_form *form);
+void					set_size(t_form *form);
+void					normalize_flag(t_form *form);
 char					is_flag(char c);
 void					read_precision(const char **fmt, t_form *form, va_list *list);
 

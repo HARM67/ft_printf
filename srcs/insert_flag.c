@@ -35,7 +35,7 @@ void		insert_flag(char **str, t_form *form)
 	make_devant(form);
 	if (form->signe >= 0)
 		make_precision(str, form);
-	longueur = make_longueur(str, form);
+	longueur = make_longueur(form);
 	if (form->devant != 0)
 		form->length += ft_strlen(form->devant);
 	make_flagstr(str, form, longueur);

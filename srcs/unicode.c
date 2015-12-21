@@ -39,7 +39,6 @@ static int	strwlen(int *u)
 char		*itounicode(unsigned int u)
 {
 	char rt[5];
-	char *p;
 
 	ft_bzero(rt, 5);
 	if (u < 128)

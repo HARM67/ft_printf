@@ -44,7 +44,7 @@ char	is_flag(char c)
 	return (0);
 }
 
-void	set_size(const char **fmt, t_form *form)
+void	set_size(t_form *form)
 {
 	if (form->l_flag)
 	{
@@ -68,7 +68,7 @@ void	set_size(const char **fmt, t_form *form)
 		form->size = sizeof(int);
 }
 
-void	normalize_flag(const char **fmt, t_form *form)
+void	normalize_flag(t_form *form)
 {
 	if (form->moin)
 		form->zero = 0;

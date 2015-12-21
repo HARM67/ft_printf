@@ -59,7 +59,7 @@ static char	*lstrtoa(t_form *form, va_list *list)
 	i = 0;
 	i = va_arg(*list, int *);
 	if (i != 0)
-		return (ltostr(i, (form->point) ? form->precision : -1));
+		return (ltostr(i, (form->point) ? (int)form->precision : -1));
 	else if (form->point == 0)
 		return (ft_strdup("(null)"));
 	else
