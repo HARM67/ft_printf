@@ -72,6 +72,7 @@ int main()
 	int i;
 
 i = 0;
+/*
 	test("%p", &i);
 	test("%d", -42);
 	test("% d", 50);
@@ -365,6 +366,38 @@ i = 0;
 //	ft_printf("Salut%d", 7850);
 	int r = -1;
 	ft_printf("{%10d}\n", 7850);
-	ft_printf("Salut{    BG_RED   } Je suis {BOLD}rouge et le je ne le suis plus\n{FG_BLACK}fond rouge{EOC} hehe");
+	*/
+	//ft_printf("Salut{    BG_RED   } Je suis {BOLD}rouge et le je ne le suis plus\n{FG_BLACK}fond rouge{EOC} hehe");
+	ft_printf("test de la couleur {FG_BLACK}noire{EOC} !\n");
+	ft_printf("test de la couleur {FG_RED}rouge{EOC} !\n");
+	ft_printf("test de la couleur {FG_GREEN}verte{EOC} !\n");
+	ft_printf("test de la couleur {FG_YELLOW}jaune{EOC} !\n");
+	ft_printf("test de la couleur {FG_BLUE}bleue{EOC} !\n");
+	ft_printf("test de la couleur {FG_PINK}rose{EOC} !\n");
+	ft_printf("test de la couleur {FG_CYAN}cyan{EOC} !\n");
+	ft_printf("test de la couleur {FG_GREY}gris{EOC} !\n");
+
+	ft_printf("test de la couleur {BG_BLACK}noire{EOC} !\n");
+	ft_printf("test de la couleur {BG_RED}rouge{EOC} !\n");
+	ft_printf("test de la couleur {BG_GREEN}verte{EOC} !\n");
+	ft_printf("test de la couleur {BG_YELLOW}jaune{EOC} !\n");
+	ft_printf("test de la couleur {BG_BLUE}bleue{EOC} !\n");
+	ft_printf("test de la couleur {BG_PINK}rose{EOC} !\n");
+	ft_printf("test de la couleur {BG_CYAN}cyan{EOC} !\n");
+	ft_printf("test de la couleur {BG_GREY}gris{EOC} !\n");
+
+	ft_printf("test du {BOLD}GRAS{EOC} !\n");
+	ft_printf("test du {DARK}sombre{EOC} !\n");
+	ft_printf("test de l'{ITALIC}italique{EOC} !\n");
+	ft_printf("test du {UNDERLINE}souligne{EOC} !\n");
+	ft_printf("test du {FLASH}clignotant{EOC} !\n");
+	ft_printf("test du {HIGHLIGHT}surligne{EOC} !\n");
+
+	ft_printf("test d'une {HIGHLIGHv}erreur{EOC} !\n");
+	ft_printf("test d'une autre {FG_ROD}erreur{EOC} !\n");
+	ft_printf("test d'une non {erreur !\n");
+	ft_printf("test d'une accolade {%3c}!\n", '@');
+
+	test("%.10s", "Mathieu");
 	return (0);
 }

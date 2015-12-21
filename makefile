@@ -19,7 +19,7 @@ SRC = ft_printf.c itoa_4.c itoa_2.c itoa_1.c itoa_8.c \
 		ft_strsub.c ft_strjoin.c ft_strtrim.c ft_strsplit.c\
 		ft_strclen.c ft_strnext.c ft_strcount.c ft_putchar_fd.c  \
 		ft_putendl.c ft_putstr_fd.c ft_putnbr_fd.c ft_itoa.c\
-		ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
+		ft_putendl_fd.c ft_lstnew.c ft_lstdelone.c \
 		ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 		unicode.c ft_strncon.h ftoa.c flag_tool.c \ stoa.c make_str.c \
 		printf_loop.c n_base.c color.c
@@ -40,7 +40,7 @@ OBJ = ft_printf.o itoa_4.o itoa_2.o itoa_1.o itoa_8.o \
 		ft_strsub.o ft_strjoin.o ft_strtrim.o ft_strsplit.o\
 		ft_strclen.o ft_strnext.o ft_strcount.o ft_putchar_fd.o  \
 		ft_putendl.o ft_putstr_fd.o ft_putnbr_fd.o ft_itoa.o\
-		ft_putendl_fd.o ft_putnbr_fd.o ft_lstnew.o ft_lstdelone.o \
+		ft_putendl_fd.o ft_lstnew.o ft_lstdelone.o \
 		ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o \
 		unicode.o ft_strncon.o ftoa.o flag_tool.o stoa.o make_str.o \
 		printf_loop.o n_base.o color.o
