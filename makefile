@@ -1,6 +1,7 @@
 NAME = libftprintf.a
 FLAG = -g
 #-Wall -Werror -Wextra
+COMPILER = clang
 SRC = ft_printf.c itoa_4.c itoa_2.c itoa_1.c itoa_8.c \
 		uitoa_base_1.c uitoa_base_2.c uitoa_base_4.c uitoa_base_8 \
 		insert_flag.c argtoa.c read_flag.c print_arg.c \
@@ -50,10 +51,10 @@ $(NAME) : $(OBJ)
 	ranlib $(NAME)
 
 $(SRC) :
-	gcc -c $(SRC) $(FLAG) 
+	$(COMPILER) -c $(SRC) $(FLAG) 
 
 test : all
-	gcc main.c $(FLAG) $(NAME) -I./
+	$(COMPILER) main.c $(FLAG) $(NAME) -I./
 	./a.out
 
 dev :

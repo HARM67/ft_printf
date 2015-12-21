@@ -28,17 +28,35 @@ static char *decode_color(char **p, int type)
 		color = 1;
 	}
 	else if (strncmp(*p, "GREEN", 5) == 0)
+	{
+		*p += 5;
 		color = 2;
+	}
 	else if (strncmp(*p, "YELLOW", 6) == 0)
+	{
+		*p += 6;
 		color = 3;
+	}
 	else if (strncmp(*p, "BLUE", 4) == 0)
+	{
+		*p += 4;
 		color = 4;
+	}
 	else if (strncmp(*p, "PINK", 4) == 0)
+	{
+		*p += 4;
 		color = 5;
+	}
 	else if (strncmp(*p, "CYAN", 4) == 0)
+	{
+		*p += 4;
 		color = 6;
+	}
 	else if (strncmp(*p, "GREY", 4) == 0)
+	{
+		*p += 4;
 		color = 7;
+	}
 	else
 		return (ft_strdup("{"));
 	return (ft_itoa(color + type));
@@ -60,12 +78,31 @@ static char	*decode_type(char **p)
 		*p += 4;
 		return (ft_strdup("1"));
 	}
+	else if (strncmp(*p, "DARK", 4) == 0)
+	{
+		*p += 4;
+		return (ft_strdup("2"));
+	}
+	else if (strncmp(*p, "ITALIC", 6) == 0)
+	{
+		*p += 6;
+		return (ft_strdup("3"));
+	}
 	else if (strncmp(*p, "UNDERLINE", 9) == 0)
+	{
+		*p += 9;
 		return (ft_strdup("4"));
-	else if (strncmp(*p, "FLAH", 4) == 0)
+	}
+	else if (strncmp(*p, "FLASH", 5) == 0)
+	{
+		*p += 5;
 		return (ft_strdup("5"));
+	}
 	else if (strncmp(*p, "HIGHLIGHT", 9) == 0)
+	{
+		*p += 9;
 		return (ft_strdup("7"));
+	}
 	return (ft_strdup("{"));
 }
 
