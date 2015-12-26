@@ -54,6 +54,8 @@ union					u_arg
 	unsigned int		uli;
 };
 
+int						ft_sprintf(char **rt, const char *fmt, ...);
+int						ft_fprintf(int fd, const char *fmt, ...);
 int						ft_printf(const char *fmt, ...);
 int						printf_loop(const char *fmt, char **str, va_list *list);
 

@@ -30,7 +30,7 @@ int	ft_sprintf(char **rt, const char *fmt, ...)
 	return (l);
 }
 
-int	ft_printf_fd(int fd, const char *fmt, ...)
+int	ft_fprintf(int fd, const char *fmt, ...)
 {
 	int		l;
 	va_list	list;
