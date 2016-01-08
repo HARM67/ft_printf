@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 11:48:48 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 16:35:17 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/08 02:35:29 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*decode_color(char **p, int type)
 {
 	int color;
 
-	(*p) +=3;
+	(*p) += 3;
 	if (is_this(p, "BLACK", 5))
 		color = 0;
 	else if (is_this(p, "RED", 3))
@@ -50,11 +50,11 @@ static char	*decode_color(char **p, int type)
 
 static char	*decode_type(char **p)
 {
-	if (ft_strncmp(*p, "FG_",  3) == 0)
+	if (ft_strncmp(*p, "FG_", 3) == 0)
 		return (decode_color(p, 30));
 	else if (ft_strncmp(*p, "BG_", 3) == 0)
 		return (decode_color(p, 40));
-	else if (is_this(p, "EOC",  3))
+	else if (is_this(p, "EOC", 3))
 		return (ft_strdup("0"));
 	else if (is_this(p, "BOLD", 4))
 		return (ft_strdup("1"));
@@ -83,9 +83,9 @@ void		create_str_color(char **tmp)
 
 void		make_color(const char **fmt, char **str, int *l)
 {
-	char *p;
-	char *tmp;
-	int i;
+	char	*p;
+	char	*tmp;
+	int		i;
 
 	i = 0;
 	p = (char *)*fmt;

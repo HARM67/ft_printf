@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 08:21:51 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 10:15:11 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/08 02:45:19 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char		*ltostr(int *l, int l_max)
 	{
 		i -= sizeofunicode(*l);
 		tmp = itounicode(*l++);
-		strcat(str, tmp);
+		ft_strcat(str, tmp);
 		free(tmp);
 	}
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 21:52:17 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 15:39:22 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/08 02:45:06 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	arg_conform(t_form *form, char **rt)
 	if ((form->signe == 0 || form->signe == 1) && form->point && **rt == '0')
 	{
 		free(*rt);
-		*rt = strdup("\0");
+		*rt = ft_strdup("\0");
 		form->length = 0;
 	}
 }

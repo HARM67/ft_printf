@@ -6,7 +6,7 @@
 /*   By: mfroehly <mfroehly@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/17 09:21:51 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 16:36:03 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/08 02:36:02 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	recup_arg(const char **fmt, va_list *list, char **str, int *l)
 {
-	int i;
+	int		i;
 	char	*tmp;
 
 	i = *l;

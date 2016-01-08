@@ -6,7 +6,7 @@
 /*   By: mfroehly <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 22:08:19 by mfroehly          #+#    #+#             */
-/*   Updated: 2015/12/17 16:26:56 by mfroehly         ###   ########.fr       */
+/*   Updated: 2016/01/08 02:43:49 by mfroehly         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,21 @@ void					make_flagstr(char **str, t_form *form, char *longueur);
 
 char					*argtoa(t_form *form, va_list *list);
 
-void					read_flag(const char **fmt, t_form *form, va_list *list);
+void					read_flag(const char **fmt,
+										t_form *form, va_list *list);
 
-void					read_longueur(const char **fmt, t_form *form, va_list *list);
+void					read_longueur(const char **fmt,
+										t_form *form, va_list *list);
 void					set_size(t_form *form);
 void					normalize_flag(t_form *form);
 char					is_flag(char c);
-void					read_precision(const char **fmt, t_form *form, va_list *list);
+void					read_precision(const char **fmt,
+										t_form *form, va_list *list);
 
 char					*print_arg(const char **fmt, va_list *list, int *l);
 
 char					*itounicode(unsigned int u);
-char 					*ltostr(int *l, int l_max);
-//void					putwchar(int c)
+char					*ltostr(int *l, int l_max);
 char					*ft_strncon(char **s1, char **s2, size_t l, int flag);
 
 char					*ftoa(double n, int precision);
